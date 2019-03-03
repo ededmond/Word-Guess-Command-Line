@@ -19,11 +19,12 @@ function play() {
             name:"letter"
         }
     ]).then(res => {
-        if (guessedLetters.includes(res.letter)) {
+        let newLetter = res.letter.charAt(0);
+        if (guessedLetters.includes(newLetter)) {
             return play();
         }
-        if (!myWord.guess(res.letter)) {
-            guessedLetters.push(res.letter);
+        if (!myWord.guess(newLetter)) {
+            guessedLetters.push(newLetter);
             lives--;
             if (lives < 1) {
                 console.log("Sorry: you lose!");
